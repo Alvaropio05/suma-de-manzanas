@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suma de manzanas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+ <style>
+    body {
+      font-family: "Silkscreen", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      background-image: url("img/pixelcut-export.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin-top: 20px;
+    }
+    .cesta{
+      
+      background-image: url('./img/cesta-Photoroom.png');
+      background-size: cover;
+      width: 300px;
+      height: 300px;
+      padding-top: 75px;
+      padding-left: 40px;
+    }
+
+    .cesta2{
+      width: 200px;
+      height: 150px;
+      margin-left: 40px;
+    }
+
+    .suma{
+      display: flex;
+      align-items: center;
+    }
+
+    .validar-btn {
+      border-radius: 16px;
+    }
+    .validar-btn:hover {
+      background-color: white;
+      color: green;
+
+    }
+    .datos{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 80px;
+    }
+    input {
+      width: 150px;
+    }
+ </style>
+</head>
+<body>
+  
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+<div id="app" class="container">
+  <div class="datos">
+    No. 1 : <input @input="validar('a')" type="number" v-model.number="n1"></input>
+    No. 2 : <input @input="validar('b')" type="number" v-model.number="n2"></input>
+  </div>
+
+      
+<div class="row">
+  <div class="col-4">
+    <div class="cesta">
+      <div class="cesta2" >
+        <img v-for="data in n1" src="/img/manzana.png" width="50px">
+      </div>
+    </div>
+  </div>
+  <div class="col-2 suma">
+     <img src="./img/suma.png" width="100px" height="100px">
+  </div>
+
+  <div class="col-4">
+    <div class="cesta">
+       <div class="cesta2" >
+        <img v-for="data in n2" src="/img/manzana.png" width="50px">
+           </div>
+      </div>
+  </div>
+  <div class="col-1 suma">
+    <img src="./img/igual-Photoroom.png" width="100px" height="100px">
+
+  </div>
+  <div class="col-1 suma">
+    <input type="number" v-model.number="respuesta">
+
+  </div>
+
+</div>
+   <div class="row ">
+      <button class="validar-btn" @click="resultado()">VALIDAR</button>
+   </div>    
+
+      
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+<script>
+  const { createApp } = Vue
+
+  createApp(
+    {
+    data() {
+      return {
+        n1 : 0,
+        n2 : 0,
+        respuesta : 0
+       }
+    },
+    methods: {
+     validar(v){
+       if (v == 'a'){
+         if (this.n1 > 20)
+           this.n1 = 20
+       }
+       else{
+        if (this.n2 > 20)
+           this.n2 = 20
+       }
+     },
+     
+     resultado(){
+       if ((this.n1 + this.n2) == this.respuesta)
+         alert('correcto') 
+        else
+         alert('incorrecto')
+
+     }
+    }
+  }
+  ).mount('#app')
+</script>
+
+
+</body>
+</html><html>
+
+</html>
